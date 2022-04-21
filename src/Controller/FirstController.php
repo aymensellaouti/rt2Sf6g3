@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FirstController
 {
     /**
-     * @Route("/first")
+     * @Route("/first", name="first")
      */
     public function first() {
         return new Response("<h1>Hello RT2 G3 :) </h1>");
