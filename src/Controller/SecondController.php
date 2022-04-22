@@ -18,6 +18,7 @@ class SecondController extends AbstractController
         } else {
             $session->set('number', $session->get('number')+1);
         }
+
         dump($request);
         return $this->render('second/index.html.twig', [
             'controller_name' => 'SecondController',

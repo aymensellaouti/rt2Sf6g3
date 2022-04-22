@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Person's List{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+        {% for person in persons %}
+            <tr>
+                <td>{{ person.name }}</td>
+                <td>{{ person.age }}</td>
+                <td><a href="{{ path('app_person_delete', {id: person.id}) }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
