@@ -16,6 +16,7 @@
              <td>{{ personne.name }}</td>
              <td>{{ personne.age }}</td>
              <td><a href="{{ path('app_personne_delete', {'id': personne.id}) }}">Delete</a></td>
+             <td><a href="{{ path('personne_edit', {'id': personne.id}) }}">Update</a></td>
          </tr>
      {% endfor %}
  </table>
