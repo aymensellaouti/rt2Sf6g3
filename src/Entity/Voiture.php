@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VoitureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VoitureRepository::class)]
 class Voiture
@@ -14,10 +15,17 @@ class Voiture
     private $id;
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank(message: 'Ce champ est obligatoire')]
     private $marque;
 
     #[ORM\ManyToOne(targetEntity: Person::class, inversedBy: 'voitures')]
     private $owner;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $color;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $matricule;
 
     public function getId(): ?int
     {
@@ -44,6 +52,30 @@ class Voiture
     public function setOwner(?Person $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getMatricule(): ?string
+    {
+        return $this->matricule;
+    }
+
+    public function setMatricule(?string $matricule): self
+    {
+        $this->matricule = $matricule;
 
         return $this;
     }

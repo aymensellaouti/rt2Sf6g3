@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Liste des voitures{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tr>
+            <th>Matricule</th>
+            <th>Marque</th>
+            <th>couleur</th>
+            <th>Owner</th>
+            <th>Actions</th>
+        </tr>
+        {% for voiture in voitures %}
+        <tr>
+            <td>{{ voiture.matricule }}</td>
+            <td>{{ voiture.marque }}</td>
+            <td>{{ voiture.color }}</td>
+            {% if voiture.owner %}
+                <td>{{ voiture.owner.name }}</td>
+            {% else %}
+                <td>For Sale</td>
+            {% endif %}
+            <td><a href="{{ path('app_voitur_edit', {id: voiture.id}) }}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
